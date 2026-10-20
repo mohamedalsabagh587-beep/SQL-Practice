@@ -1,0 +1,58 @@
+# 📊 SQL Practice & Intermediate Data Analytics
+
+Welcome to my personal SQL repository! This repository tracks my continuous hands-on learning journey with MySQL and MySQL Workbench, following practical data analysis scenarios and bootcamps (such as *Alex The Analyst*).
+
+---
+
+## 🛠️ Tech Stack & Skills Learned
+
+* **Database Engine:** MySQL 8.0 / MySQL Workbench
+* **Query Techniques:**
+  * **Window Functions:** `ROW_NUMBER()`, `RANK()`, `DENSE_RANK()`, `SUM() OVER(PARTITION BY ...)`
+  * **Subqueries:** Scalar subqueries in `SELECT`, subqueries in `WHERE` clauses
+  * **Joins & Aggregations:** `LEFT JOIN`, `INNER JOIN`, `GROUP BY`, `HAVING`
+  * **Data Manipulation:** Subquery logic vs Window Function efficiency
+
+---
+
+## 📁 Repository Structure & Files
+
+### 1. `window_functions_practice.sql`
+Contains full execution scripts for advanced windowing and scalar subqueries:
+- **Partitioned Department Totals:** Calculating running sums and department salary totals alongside individual employee records without collapsing rows.
+- **Ranking Functions:** Comparing ranking behaviors (`ROW_NUMBER()` vs `RANK()` vs `DENSE_RANK()`).
+
+---
+
+## 💡 Featured Query Examples
+
+### Example 1: Window Function with Partitioning (`OVER`)
+Calculating overall department salary totals alongside individual salaries:
+
+```sql
+SELECT 
+    dept_id, 
+    first_name, 
+    salary, 
+    SUM(salary) OVER(PARTITION BY dept_id) AS total_dept_salary
+FROM employee_salary;
+```
+
+### Example 2: Scalar Subquery in `WHERE` Clause
+Filtering rows dynamically based on the company-wide average salary:
+
+```sql
+SELECT first_name, last_name, salary
+FROM employee_salary
+WHERE salary > (
+    SELECT AVG(salary) 
+    FROM employee_salary
+);
+```
+
+---
+
+## 📌 Key Lessons & Troubleshooting
+
+1. **Window Function Syntax:** Always place the aggregate function (like `SUM()` or `AVG()`) directly before `OVER(PARTITION BY ...)` to avoid syntax error `1064`.
+2. **Subqueries in SELECT:** A subquery inside the `SELECT` statement must return a single scalar value (1 row, 1 column) to avoid `Error Code: 1241`.
