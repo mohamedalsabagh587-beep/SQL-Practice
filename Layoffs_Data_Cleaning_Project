@@ -1,0 +1,34 @@
+# World Layoffs Data Cleaning Project (SQL)
+
+## 📌 Project Overview
+This project focuses on cleaning and standardizing a raw dataset containing global tech layoff records from 2020 to 2023. Using **MySQL Workbench**,
+the objective was to transform messy, unorganized data into a structured format ready for Exploratory Data Analysis (EDA) and visualization.
+
+---
+
+## 🛠️ Data Cleaning Steps Applied
+
+1. **Staging Table Creation:** Created a duplicate table (`layoffs_staging`) to preserve the raw dataset integrity.
+2. **Duplicate Removal:** Used CTEs and the `ROW_NUMBER()` window function partitioned across all key metrics to identify and delete duplicate records safely.
+3. **Standardizing Data & Fixing Errors:**
+   * Trimmed leading/trailing whitespaces from company names using `TRIM()`.
+   * Standardized variations in industry names (e.g., grouped all Crypto variants into `'Crypto'`).
+   * Cleaned country punctuation issues (e.g., converted `'United States.'` to `'United States'`).
+   * Converted string formatted dates to standard SQL `DATE` format using `STR_TO_DATE()`.
+4. **Handling Blank & NULL Values:**
+   * Updated blank strings `''` to `NULL`.
+   * Used a **Self-Join** (`UPDATE t1 JOIN t2 ON company & location`) to populate missing industry values from existing company records.
+5. **Removing Unusable Data:** Dropped unnecessary rows where both `total_laid_off` and `percentage_laid_off` were `NULL`, and removed temporary helper columns.
+
+---
+
+## 📂 Project Files
+* `01_layoffs_data_cleaning.sql` - Full SQL queries used for data cleaning.
+* `layoffs_cleaned.csv` - Final clean dataset exported from MySQL.
+* `layoffs_raw.csv` - Original dataset before processing.
+
+---
+
+## 🔧 Skills & Tools Used
+* **Database Management:** MySQL Workbench
+* **SQL Techniques:** Window Functions (`ROW_NUMBER()`), CTEs, Self-Joins, Aggregate Functions, Data Type Alteration (`ALTER TABLE`), String Manipulation (`TRIM`, `LIKE`).
