@@ -258,6 +258,47 @@ ON dem.employee_id = sal.employee_id;
 
 
 
+# SQL Practice & Portfolio 🚀
+
+Welcome to my SQL practice repository! This repository documents my hands-on learning journey and projects as a self-taught Data Analyst, following **Alex The Analyst's Data Analyst Bootcamp**.
+
+## 📂 Repository Contents
+
+* **`window_functions_practice.sql`**: A comprehensive, step-by-step SQL script covering foundational and advanced concepts including:
+  * Table Joins (`INNER JOIN`, multiple table joins).
+  * Subqueries & Aggregate Functions (`GROUP BY`, `HAVING`).
+  * Advanced Window Functions (`ROW_NUMBER()`, `RANK()`, `DENSE_RANK()`, `PARTITION BY`).
+* **Data Cleaning Projects**: Real-world datasets and SQL scripts for data cleaning, standardizing text, handling NULL values, and formatting data types.
+
+## 🛠️ Tools & Technologies
+* **MySQL / SQL Server**
+* **GitHub** (Version Control & Portfolio Management)
+
+---
+*Created by Mohamed Mahmoud | Aspiring Remote Data Analyst*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
